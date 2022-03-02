@@ -1,0 +1,7 @@
+{
+    "tags": [],
+    "name": "MNIST_Tensorflow",
+    "description": "Model to classify handwritten digits",
+    "modelCategory": "BUSINESS_MODEL",
+    "custom": {}
+}

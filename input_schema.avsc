@@ -1,0 +1,24 @@
+{
+    "name": "input_schema",
+    "type": "record",
+    "fields": [
+        {
+            "name": "id",
+            "type": "int"
+        },
+        {
+            "name": "array",
+            "type": {
+                "type": "array",
+                "items": {
+                    "type": "array",
+                    "items": "float"
+                }
+            }
+        },
+        {
+            "name": "label",
+            "type": "int"
+        }
+    ]
+}

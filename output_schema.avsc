@@ -1,0 +1,25 @@
+{
+    "name": "output_schema",
+    "type": "record",
+    "fields": [
+        {
+            "name": "id",
+            "type": "int"
+        },
+        {
+            "name": "label",
+            "type": "int"
+        },
+        {
+            "name": "predicted_probs",
+            "type": {
+                "type": "array",
+                "items": "float"
+            }
+        },
+        {
+            "name": "score",
+            "type": "int"
+        }
+    ]
+}
