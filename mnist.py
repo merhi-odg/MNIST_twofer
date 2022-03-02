@@ -2,29 +2,37 @@
 # modelop.schema.1: output_schema.avsc
 
 import tensorflow as tf
+import joblib
 import numpy as np
 
 
 # modelop.init
-def begin():
-    global model
-    # Loading model from trained artifact    
-    model = tf.keras.models.load_model('./binaries/mnist.h5')
+def begin() -> None:
+    
+    global model_tf, model_sklearn
+    # Loading model from trained artifact
+    model_tf = tf.keras.models.load_model("./binaries/mnist.h5")
+    model_sklearn = joblib.load(open("./binaries/sklearn_mnist.pkl", "rb"))
 
 
 # modelop.score
-def action(datum):
-    
+def action(datum: dict) -> dict:
+
     # Compute 10 probabilities, 1 for each possible digit
-    predicted_probs = model.predict(np.array([datum["array"]])).tolist()[0]
-    
-    # Add these probabilities to the output
-    datum["predicted_probs"] = predicted_probs
+    predicted_probs_tf = model_tf.predict(np.array([datum["array"]])).tolist()[0]
+    predicted_probs_sklearn = model_sklearn.predict_proba(
+        np.array(datum["array"]).ravel().reshape(1, -1)
+    ).tolist()[0]
+
+    # Add the max probability to output
+    datum["max_prob_tf"] = np.max(predicted_probs_tf)
+    datum["max_prob_sklearn"] = np.max(predicted_probs_sklearn)
 
     # Add the best possible matching digit to the output
-    datum["score"] = np.argmax(predicted_probs)
+    datum["score_tf"] = np.argmax(predicted_probs_tf)
+    datum["score_sklearn"] = np.argmax(predicted_probs_sklearn)
 
     # Remove input array from output
     del datum["array"]
-    
+
     yield datum

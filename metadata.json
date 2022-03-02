@@ -1,7 +1,7 @@
 {
     "tags": [],
-    "name": "MNIST_Tensorflow",
-    "description": "Model to classify handwritten digits",
+    "name": "MNIST_twofer",
+    "description": "Model to classify handwritten digits based on CNN(tensorflow) and SVM(sklearn)",
     "modelCategory": "BUSINESS_MODEL",
     "custom": {}
 }

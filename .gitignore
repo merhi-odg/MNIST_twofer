@@ -1,3 +1,5 @@
 .python-version
 data/test.json
 data/train.json
+binaries/uncompressed_sklearn_mnist.pkl
+.vscode/

@@ -11,14 +11,19 @@
             "type": "int"
         },
         {
-            "name": "predicted_probs",
-            "type": {
-                "type": "array",
-                "items": "float"
-            }
+            "name": "max_prob_tf",
+            "type": "float"
         },
         {
-            "name": "score",
+            "name": "max_prob_sklearn",
+            "type": "float"
+        },
+        {
+            "name": "score_tf",
+            "type": "int"
+        },
+        {
+            "name": "score_sklearn",
             "type": "int"
         }
     ]
