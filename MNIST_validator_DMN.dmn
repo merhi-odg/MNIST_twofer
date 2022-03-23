@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="Definitions_0wb2acp" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.5.0">
+  <decision id="decision_1o9s80e" name="">
+    <decisionTable id="decisionTable_1qlqrtz" hitPolicy="COLLECT">
+      <input id="input1" label="percent_mismatch" camunda:inputVariable="percent_mismatch">
+        <inputExpression id="inputExpression1" typeRef="double">
+          <text>percent_mismatch</text>
+        </inputExpression>
+      </input>
+      <output id="output1" label="passes" name="passes" typeRef="boolean" />
+      <output id="OutputClause_0kii83w" label="reason" name="reason" typeRef="string" biodi:width="220" />
+      <output id="OutputClause_1ku18vw" label="category" name="category" typeRef="string" />
+      <rule id="DecisionRule_1cbaguk">
+        <inputEntry id="UnaryTests_1dz6xas">
+          <text>&gt;2.5</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0p0acne">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_036hxad">
+          <text>"Mismatch above 2.5%"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0hxvexu">
+          <text>"Performance"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0xeuiad">
+        <inputEntry id="UnaryTests_0w1nmq6">
+          <text>&lt;=2.5</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1sy0gb4">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1vnfafi">
+          <text>"Mismatch below 2.5%"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_16lbdhy">
+          <text>"Performance"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+</definitions>
